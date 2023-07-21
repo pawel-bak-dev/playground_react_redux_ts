@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ActionTypes } from 'actions/types.ts';
+import { ActionTypes } from 'modules/todo/actions/types.ts';
 
 export interface Todo {
   id: number;

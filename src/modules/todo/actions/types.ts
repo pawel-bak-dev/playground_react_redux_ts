@@ -1,4 +1,7 @@
-import { FetchTodosAction, DeleteTodoAction } from 'actions';
+import {
+  FetchTodosAction,
+  DeleteTodoAction,
+} from 'modules/todo/actions/index.ts';
 export enum ActionTypes {
   fetchTodos,
   deleteTodo,

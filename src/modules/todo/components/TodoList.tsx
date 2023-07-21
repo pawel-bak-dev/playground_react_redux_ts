@@ -1,27 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Todo, fetchTodos, deleteTodo } from 'actions';
-import { StoreState } from 'reducers';
+import { Todo, fetchTodos, deleteTodo } from 'modules/todo/actions';
+import { StoreState } from 'modules/todo/reducers';
 
-interface AppProps {
+interface TodoListProps {
   todos: Todo[];
   // eslint-disable-next-line @typescript-eslint/ban-types
   fetchTodos: Function;
   deleteTodo: typeof deleteTodo;
 }
 
-interface AppState {
+interface TodoListState {
   fetching: boolean;
 }
 
-class _App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
+class _TodoList extends React.Component<TodoListProps, TodoListState> {
+  constructor(props: TodoListProps) {
     super(props);
 
     this.state = { fetching: false };
   }
 
-  componentDidUpdate(prevProps: Readonly<AppProps>) {
+  componentDidUpdate(prevProps: Readonly<TodoListProps>) {
     if (!prevProps.todos.length && this.props.todos.length) {
       this.setState({ fetching: false });
     }
@@ -64,4 +64,6 @@ const mapStateToProps = ({ todos }: StoreState): { todos: Todo[] } => {
   return { todos };
 };
 
-export const App = connect(mapStateToProps, { fetchTodos, deleteTodo })(_App);
+export const TodoList = connect(mapStateToProps, { fetchTodos, deleteTodo })(
+  _TodoList
+);
